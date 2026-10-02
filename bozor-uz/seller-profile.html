@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Аброр Тошматов — bozor.uz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .seller-header{ display:flex; gap:var(--sp-5); align-items:center; padding:var(--sp-8) 0; border-bottom:1px solid var(--color-border); flex-wrap:wrap; }
+  .seller-stats-row{ display:flex; gap:var(--sp-6); margin-top:var(--sp-2); flex-wrap:wrap; }
+  .seller-stats-row div{ font-size:var(--fs-sm); color:var(--color-ink-soft); }
+  .seller-stats-row b{ color:var(--color-ink); }
+</style>
+</head>
+<body>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+      <a class="logo" href="index.html">
+        <span class="logo-mark"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="1"/><path d="M3 9l3-5h12l3 5"/><path d="M3 9h18"/></svg></span>
+        bozor<span class="logo-dot">.uz</span>
+      </a>
+      <button type="button" class="location-pill" id="regionPillBtn">
+        <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> <span class="pill-label" id="regionPillLabel">Ташкент город</span>
+      </button>
+      <form class="header-search" action="catalog.html" method="get" role="search">
+        <input type="search" name="q" placeholder="Что вы ищете?" autocomplete="off">
+        <button type="submit" aria-label="Искать"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      </form>
+      <div class="header-actions">
+      <a class="header-action-link" href="favorites.html" title="Избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg><span>Избранное</span></a>
+      <a class="btn btn-outline btn-sm" href="login.html">Войти</a>
+      <a class="btn btn-primary btn-sm" href="login.html?next=add-listing.html"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Подать объявление</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <nav class="container header-nav">
+      <a class="all-cats" href="categories.html"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg> Все категории</a>
+      <a href="catalog.html?category=transport">Транспорт</a>
+      <a href="catalog.html?category=realty">Недвижимость</a>
+      <a href="catalog.html?category=electronics">Электроника</a>
+      <a href="catalog.html?category=jobs">Работа</a>
+      <a href="catalog.html?category=services">Услуги</a>
+      <a href="catalog.html?category=personal">Личные вещи</a>
+      <a href="catalog.html?category=home-garden">Дом и сад</a>
+      <a href="catalog.html?category=hobby">Хобби и спорт</a>
+    </nav>
+  </header>
+  <div class="modal-overlay" id="regionModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Выберите регион</h3>
+        <button class="modal-close" data-close-modal="regionModal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <button type="button" class="btn btn-outline btn-block" id="geoDetectBtn" style="margin-bottom:14px">
+        <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> Определить автоматически
+      </button>
+      <div style="max-height:360px;overflow-y:auto">
+        <button type="button" class="checkbox-row region-option-row" data-region="tashkent-city" data-region-name="Ташкент город" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ташкент город</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="tashkent-region" data-region-name="Ташкентская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ташкентская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="andijan" data-region-name="Андижанская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Андижанская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="bukhara" data-region-name="Бухарская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Бухарская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="jizzakh" data-region-name="Джизакская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Джизакская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="kashkadarya" data-region-name="Кашкадарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Кашкадарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="navoiy" data-region-name="Навоийская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Навоийская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="namangan" data-region-name="Наманганская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Наманганская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="samarkand" data-region-name="Самаркандская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Самаркандская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="surkhandarya" data-region-name="Сурхандарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Сурхандарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="syrdarya" data-region-name="Сырдарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Сырдарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="fergana" data-region-name="Ферганская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ферганская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="khorezm" data-region-name="Хорезмская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Хорезмская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="karakalpakstan" data-region-name="Республика Каракалпакстан" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Республика Каракалпакстан</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<main>
+  <div class="container">
+    <nav class="breadcrumbs" id="breadcrumbs"><a href="index.html">Главная</a><span class="sep">/</span><span class="current">Аброр Тошматов</span></nav>
+    <div class="seller-header" id="sellerHeader">
+      <div class="avatar avatar-lg">АТ</div>
+      <div>
+        <h1 style="font-size:var(--fs-xl)">Аброр Тошматов</h1>
+        <div class="seller-stats-row">
+          <div>★ <b>4.8</b> (34 отзывов)</div>
+          <div><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> Ташкент город</div>
+          <div>На сайте с март 2022 г.</div>
+        </div>
+      </div>
+      <a class="btn btn-primary" style="margin-left:auto" href="contact-seller.html?listing=2"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg> Написать</a>
+    </div>
+  </div>
+  <div class="container" style="padding:var(--sp-8) 0 var(--sp-16)">
+    <h2 style="font-size:var(--fs-lg);margin-bottom:var(--sp-4)" id="listingsCount">Объявления продавца (5)</h2>
+    <div class="listing-grid" id="sellerListingsGrid">
+    <article class="listing-card">
+      <a href="product.html?id=2" class="listing-thumb-link">
+        <div class="listing-thumb">
+          <img src="https://picsum.photos/seed/flat10/900/675" alt="2-комнатная квартира в новостройке, Мирзо-Улугбекский р-н" loading="lazy">
+          <span class="listing-badge">Топ</span>
+          <button class="listing-fav" data-fav-id="2" aria-label="В избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg></button>
+        </div>
+      </a>
+      <div class="listing-body">
+        <div class="listing-price">420 000 000 сум</div>
+        <a href="product.html?id=2"><h3 class="listing-title">2-комнатная квартира в новостройке, Мирзо-Улугбекский р-н</h3></a>
+        <div class="listing-meta">
+          <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Ташкент</span>
+          <span>4 дн. назад</span>
+        </div>
+      </div>
+    </article>
+    <article class="listing-card">
+      <a href="product.html?id=5" class="listing-thumb-link">
+        <div class="listing-thumb">
+          <img src="https://picsum.photos/seed/office0/900/675" alt="Требуется менеджер по продажам, з/п от 5 000 000 сум" loading="lazy">
+          
+          <button class="listing-fav" data-fav-id="5" aria-label="В избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg></button>
+        </div>
+      </a>
+      <div class="listing-body">
+        <div class="listing-price">5 000 000 сум</div>
+        <a href="product.html?id=5"><h3 class="listing-title">Требуется менеджер по продажам, з/п от 5 000 000 сум</h3></a>
+        <div class="listing-meta">
+          <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Ташкент</span>
+          <span>4 дн. назад</span>
+        </div>
+      </div>
+    </article>
+    <article class="listing-card">
+      <a href="product.html?id=11" class="listing-thumb-link">
+        <div class="listing-thumb">
+          <img src="https://picsum.photos/seed/rentflat0/900/675" alt="1-комнатная квартира в аренду, центр города" loading="lazy">
+          
+          <button class="listing-fav" data-fav-id="11" aria-label="В избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg></button>
+        </div>
+      </a>
+      <div class="listing-body">
+        <div class="listing-price">3 200 000 сум</div>
+        <a href="product.html?id=11"><h3 class="listing-title">1-комнатная квартира в аренду, центр города</h3></a>
+        <div class="listing-meta">
+          <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Ташкент</span>
+          <span>3 дн. назад</span>
+        </div>
+      </div>
+    </article>
+    <article class="listing-card">
+      <a href="product.html?id=16" class="listing-thumb-link">
+        <div class="listing-thumb">
+          <img src="https://picsum.photos/seed/land0/900/675" alt="Земельный участок 6 соток под строительство" loading="lazy">
+          
+          <button class="listing-fav" data-fav-id="16" aria-label="В избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg></button>
+        </div>
+      </a>
+      <div class="listing-body">
+        <div class="listing-price">185 000 000 сум</div>
+        <a href="product.html?id=16"><h3 class="listing-title">Земельный участок 6 соток под строительство</h3></a>
+        <div class="listing-meta">
+          <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Кибрайский р-н</span>
+          <span>21 августа</span>
+        </div>
+      </div>
+    </article>
+    <article class="listing-card">
+      <a href="product.html?id=24" class="listing-thumb-link">
+        <div class="listing-thumb">
+          <img src="https://picsum.photos/seed/shop0/900/675" alt="Коммерческое помещение 85 м² под магазин, 1-я линия" loading="lazy">
+          
+          <button class="listing-fav" data-fav-id="24" aria-label="В избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg></button>
+        </div>
+      </a>
+      <div class="listing-body">
+        <div class="listing-price">5 200 000 сум</div>
+        <a href="product.html?id=24"><h3 class="listing-title">Коммерческое помещение 85 м² под магазин, 1-я линия</h3></a>
+        <div class="listing-meta">
+          <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Ташкент</span>
+          <span>19 августа</span>
+        </div>
+      </div>
+    </article></div>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo">bozor<span style="color:var(--color-accent)">.uz</span></div>
+        <p class="footer-about">Доска объявлений №1 в Узбекистане. Покупайте и продавайте товары и услуги в своём городе быстро и безопасно.</p>
+        <div class="footer-socials" style="margin-top:16px">
+          <a href="#" aria-label="Telegram"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L2.5 11.4c-.9.35-.9 1.05-.15 1.3l4.5 1.4 1.7 5.3c.2.6.4.65.85.3l2.4-1.9 4.4 3.25c.6.35 1.1.15 1.25-.55L21.9 5.1c.2-.85-.35-1.35-1-1.1z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 21v-8h3l.5-4H14V6.5c0-1.15.3-1.9 2-1.9H17.5V1.1C17.2 1.05 16 1 14.7 1 11.9 1 10 2.7 10 5.8V9H7v4h3v8z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Категории</h4>
+        <a href="catalog.html?category=transport">Транспорт</a>
+        <a href="catalog.html?category=realty">Недвижимость</a>
+        <a href="catalog.html?category=electronics">Электроника</a>
+        <a href="catalog.html?category=jobs">Работа</a>
+        <a href="catalog.html?category=services">Услуги</a>
+        <a href="categories.html">Все категории →</a>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <a href="about.html">О сайте</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="help.html">Помощь</a>
+      </div>
+      <div>
+        <h4>Пользователям</h4>
+        <a href="add-listing.html">Подать объявление</a>
+        <a href="login.html">Войти</a>
+        <a href="register.html">Регистрация</a>
+      </div>
+      <div>
+        <h4>Документы</h4>
+        <a href="rules.html">Правила сервиса</a>
+        <a href="privacy.html">Конфиденциальность</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 bozor.uz — доска объявлений Узбекистана</span>
+      <span>Фронтенд готов к подключению к Django API</span>
+    </div>
+  </footer>
+
+<script src="js/icons.js"></script>
+<script src="js/data/regions.js"></script>
+<script src="js/data/categories.js"></script>
+<script src="js/data/listings.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/components.js"></script>
+<script>
+async function initSellerProfile(){
+  const id = qsGet('id');
+  if (!id || id === 'u1') return; // default seller (u1) is already baked into the page
+  const s = seller(id);
+  if (!s) return;
+  document.getElementById('pageTitle').textContent = `${s.name} — bozor.uz`;
+  document.getElementById('breadcrumbs').innerHTML = `<a href="index.html">Главная</a><span class="sep">/</span><span class="current">${escapeHtml(s.name)}</span>`;
+
+  document.getElementById('sellerHeader').innerHTML = `
+    <div class="avatar avatar-lg">${initials(s.name)}</div>
+    <div>
+      <h1 style="font-size:var(--fs-xl)">${escapeHtml(s.name)}</h1>
+      <div class="seller-stats-row">
+        <div>★ <b>${s.rating}</b> (${s.reviews} отзывов)</div>
+        <div>${ICON('pin')} ${regionName(s.regionId)}</div>
+        <div>На сайте с ${new Date(s.registered).toLocaleDateString('ru-RU',{month:'long', year:'numeric'})}</div>
+      </div>
+    </div>
+    <a class="btn btn-primary" style="margin-left:auto" href="contact-seller.html?listing=${LISTINGS.find(l=>l.sellerId===s.id)?.id||''}">${ICON('chat')} Написать</a>
+  `;
+
+  const listings = await apiGetListingsBySeller(s.id);
+  document.getElementById('listingsCount').textContent = `Объявления продавца (${listings.length})`;
+  document.getElementById('sellerListingsGrid').innerHTML = listings.map(listingCardHTML).join('') ||
+    `<div class="empty-state" style="grid-column:1/-1">${ICON('boxEmpty')}<h3>У продавца пока нет активных объявлений</h3></div>`;
+}
+initSellerProfile();
+</script>
+</body>
+</html>

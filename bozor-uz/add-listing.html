@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Разместить объявление — bozor.uz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<style>
+  .wizard-wrap{ max-width: 720px; margin: 0 auto; padding: var(--sp-8) var(--sp-4) var(--sp-16); }
+  .wizard-panel{ display:none; }
+  .wizard-panel.active{ display:block; animation: fadeIn .2s ease; }
+  @keyframes fadeIn{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:none;} }
+  .review-row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--color-border); font-size:var(--fs-sm); }
+  .review-row span:first-child{ color:var(--color-ink-soft); }
+  .review-row span:last-child{ font-weight:600; text-align:right; max-width:60%; }
+  .review-photos{ display:flex; gap:8px; overflow-x:auto; margin-bottom:var(--sp-5); }
+  .review-photos img{ width:90px;height:68px;object-fit:cover;border-radius:var(--radius-sm); flex-shrink:0; }
+  .field-2col{ display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-4); }
+  @media (max-width:600px){ .field-2col{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+      <a class="logo" href="index.html">
+        <span class="logo-mark"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="1"/><path d="M3 9l3-5h12l3 5"/><path d="M3 9h18"/></svg></span>
+        bozor<span class="logo-dot">.uz</span>
+      </a>
+      <button type="button" class="location-pill" id="regionPillBtn">
+        <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> <span class="pill-label" id="regionPillLabel">Ташкент город</span>
+      </button>
+      <form class="header-search" action="catalog.html" method="get" role="search">
+        <input type="search" name="q" placeholder="Что вы ищете?" autocomplete="off">
+        <button type="submit" aria-label="Искать"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      </form>
+      <div class="header-actions">
+      <a class="header-action-link" href="favorites.html" title="Избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg><span>Избранное</span></a>
+      <a class="header-action-link" href="messages.html" title="Сообщения"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><span>Чаты</span></a>
+      <a class="header-action-link" href="account-dashboard.html" title="Личный кабинет"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.4-3.7 4.4-5.6 7.5-5.6s6.1 1.9 7.5 5.6"/></svg><span>Кабинет</span></a>
+      <a class="btn btn-primary btn-sm" href="add-listing.html"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Подать объявление</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <nav class="container header-nav">
+      <a class="all-cats" href="categories.html"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg> Все категории</a>
+      <a href="catalog.html?category=transport">Транспорт</a>
+      <a href="catalog.html?category=realty">Недвижимость</a>
+      <a href="catalog.html?category=electronics">Электроника</a>
+      <a href="catalog.html?category=jobs">Работа</a>
+      <a href="catalog.html?category=services">Услуги</a>
+      <a href="catalog.html?category=personal">Личные вещи</a>
+      <a href="catalog.html?category=home-garden">Дом и сад</a>
+      <a href="catalog.html?category=hobby">Хобби и спорт</a>
+    </nav>
+  </header>
+  <div class="modal-overlay" id="regionModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Выберите регион</h3>
+        <button class="modal-close" data-close-modal="regionModal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <button type="button" class="btn btn-outline btn-block" id="geoDetectBtn" style="margin-bottom:14px">
+        <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> Определить автоматически
+      </button>
+      <div style="max-height:360px;overflow-y:auto">
+        <button type="button" class="checkbox-row region-option-row" data-region="tashkent-city" data-region-name="Ташкент город" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ташкент город</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="tashkent-region" data-region-name="Ташкентская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ташкентская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="andijan" data-region-name="Андижанская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Андижанская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="bukhara" data-region-name="Бухарская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Бухарская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="jizzakh" data-region-name="Джизакская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Джизакская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="kashkadarya" data-region-name="Кашкадарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Кашкадарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="navoiy" data-region-name="Навоийская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Навоийская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="namangan" data-region-name="Наманганская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Наманганская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="samarkand" data-region-name="Самаркандская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Самаркандская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="surkhandarya" data-region-name="Сурхандарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Сурхандарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="syrdarya" data-region-name="Сырдарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Сырдарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="fergana" data-region-name="Ферганская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ферганская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="khorezm" data-region-name="Хорезмская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Хорезмская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="karakalpakstan" data-region-name="Республика Каракалпакстан" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Республика Каракалпакстан</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<main>
+  <div class="wizard-wrap">
+    <h1 id="wizardTitle" style="font-size:var(--fs-xl);text-align:center;margin-bottom:var(--sp-8)">Разместить объявление</h1>
+
+    <div class="wizard-steps" id="wizardSteps">
+      <div class="wizard-step active" data-step="0"><b>1</b><span class="step-label">Категория</span></div>
+      <div class="wizard-step" data-step="1"><b>2</b><span class="step-label">Фото</span></div>
+      <div class="wizard-step" data-step="2"><b>3</b><span class="step-label">Описание</span></div>
+      <div class="wizard-step" data-step="3"><b>4</b><span class="step-label">Локация</span></div>
+      <div class="wizard-step" data-step="4"><b>5</b><span class="step-label">Проверка</span></div>
+    </div>
+
+    <!-- Step 1: category -->
+    <section class="wizard-panel active" data-panel="0">
+      <h3 style="margin-bottom:var(--sp-4)">Выберите категорию</h3>
+      <div class="cat-picker" id="catPicker">
+        <div class="cat-pick-item" data-cat="transport"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V11l2-5h12l2 5v5"/><circle cx="7.5" cy="16.5" r="1.6"/><circle cx="16.5" cy="16.5" r="1.6"/><path d="M4 11h16"/></svg><span>Транспорт</span></div>
+        <div class="cat-pick-item" data-cat="realty"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-6 8 6v9H4z"/><path d="M9.5 20v-6h5v6"/></svg><span>Недвижимость</span></div>
+        <div class="cat-pick-item" data-cat="electronics"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><span>Электроника</span></div>
+        <div class="cat-pick-item" data-cat="jobs"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V5h8v3"/></svg><span>Работа</span></div>
+        <div class="cat-pick-item" data-cat="services"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 7a4 4 0 0 1-5.4 5.4L4 17l3 3 4.6-4.6A4 4 0 0 0 17 10z"/></svg><span>Услуги</span></div>
+        <div class="cat-pick-item" data-cat="personal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4l4 2 4-2 4 4-3 3v11H7V11L4 8z"/></svg><span>Личные вещи</span></div>
+        <div class="cat-pick-item" data-cat="home-garden"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><path d="M3 12h18v5H3z"/><path d="M5 17v3M19 17v3"/></svg><span>Дом и сад</span></div>
+        <div class="cat-pick-item" data-cat="hobby"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg><span>Хобби и спорт</span></div>
+      </div>
+      <div class="field" style="margin-top:var(--sp-6)" id="subPickerWrap" hidden>
+        <label>Подкатегория</label>
+        <select class="input" id="subPicker"></select>
+      </div>
+    </section>
+
+    <!-- Step 2: photos -->
+    <section class="wizard-panel" data-panel="1">
+      <h3 style="margin-bottom:6px">Добавьте фото</h3>
+      <p class="hint" style="margin-bottom:var(--sp-4)">Первое фото станет обложкой объявления. До 8 фотографий.</p>
+      <div class="photo-uploader" id="photoUploader"></div>
+      <input type="file" id="photoInput" accept="image/*" multiple hidden>
+    </section>
+
+    <!-- Step 3: details -->
+    <section class="wizard-panel" data-panel="2">
+      <h3 style="margin-bottom:var(--sp-4)">Опишите товар</h3>
+      <div class="field">
+        <label for="titleInput">Заголовок объявления</label>
+        <input class="input" id="titleInput" maxlength="90" placeholder="Например: iPhone 13 Pro 256GB, синий" required>
+      </div>
+      <div class="field">
+        <label for="descInput">Описание</label>
+        <textarea class="input" id="descInput" rows="6" placeholder="Расскажите о состоянии, комплектации, причине продажи…" required></textarea>
+      </div>
+      <div class="field-2col">
+        <div class="field">
+          <label for="priceInput">Цена, сум</label>
+          <input class="input" type="number" min="0" id="priceInput" placeholder="0" required>
+        </div>
+        <div class="field">
+          <label for="conditionInput">Состояние</label>
+          <select class="input" id="conditionInput">
+            <option value="">Не указывать</option>
+            <option value="Новое">Новое</option>
+            <option value="Б/у">Б/у</option>
+          </select>
+        </div>
+      </div>
+      <label class="checkbox-row" style="padding:0 0 var(--sp-4)"><input type="checkbox" id="negotiableInput"> Готов(а) торговаться</label>
+      <div id="dynamicAttrsWrap"></div>
+    </section>
+
+    <!-- Step 4: location -->
+    <section class="wizard-panel" data-panel="3">
+      <h3 style="margin-bottom:var(--sp-4)">Местоположение и контакты</h3>
+      <div class="field">
+        <label for="regionInput">Регион</label>
+        <select class="input" id="regionInput" required><option value="tashkent-city">Ташкент город</option><option value="tashkent-region">Ташкентская область</option><option value="andijan">Андижанская область</option><option value="bukhara">Бухарская область</option><option value="jizzakh">Джизакская область</option><option value="kashkadarya">Кашкадарьинская область</option><option value="navoiy">Навоийская область</option><option value="namangan">Наманганская область</option><option value="samarkand">Самаркандская область</option><option value="surkhandarya">Сурхандарьинская область</option><option value="syrdarya">Сырдарьинская область</option><option value="fergana">Ферганская область</option><option value="khorezm">Хорезмская область</option><option value="karakalpakstan">Республика Каракалпакстан</option></select>
+      </div>
+      <div class="field">
+        <label for="cityInput">Город / район</label>
+        <input class="input" id="cityInput" placeholder="Например: Ташкент, Юнусабадский р-н" required>
+      </div>
+      <div class="field">
+        <label for="phoneInput">Телефон для связи</label>
+        <div class="input-group">
+          <span class="input-addon">+998</span>
+          <input class="input" id="phoneInput" placeholder="90 123-45-67" required>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 5: review -->
+    <section class="wizard-panel" data-panel="4">
+      <h3 style="margin-bottom:var(--sp-4)">Проверьте объявление</h3>
+      <div class="review-photos" id="reviewPhotos"></div>
+      <div id="reviewRows"></div>
+    </section>
+
+    <div class="wizard-nav">
+      <button class="btn btn-outline" id="wizardBackBtn">Назад</button>
+      <button class="btn btn-secondary" id="wizardNextBtn">Далее</button>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo">bozor<span style="color:var(--color-accent)">.uz</span></div>
+        <p class="footer-about">Доска объявлений №1 в Узбекистане. Покупайте и продавайте товары и услуги в своём городе быстро и безопасно.</p>
+        <div class="footer-socials" style="margin-top:16px">
+          <a href="#" aria-label="Telegram"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L2.5 11.4c-.9.35-.9 1.05-.15 1.3l4.5 1.4 1.7 5.3c.2.6.4.65.85.3l2.4-1.9 4.4 3.25c.6.35 1.1.15 1.25-.55L21.9 5.1c.2-.85-.35-1.35-1-1.1z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 21v-8h3l.5-4H14V6.5c0-1.15.3-1.9 2-1.9H17.5V1.1C17.2 1.05 16 1 14.7 1 11.9 1 10 2.7 10 5.8V9H7v4h3v8z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Категории</h4>
+        <a href="catalog.html?category=transport">Транспорт</a>
+        <a href="catalog.html?category=realty">Недвижимость</a>
+        <a href="catalog.html?category=electronics">Электроника</a>
+        <a href="catalog.html?category=jobs">Работа</a>
+        <a href="catalog.html?category=services">Услуги</a>
+        <a href="categories.html">Все категории →</a>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <a href="about.html">О сайте</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="help.html">Помощь</a>
+      </div>
+      <div>
+        <h4>Пользователям</h4>
+        <a href="add-listing.html">Подать объявление</a>
+        <a href="login.html">Войти</a>
+        <a href="register.html">Регистрация</a>
+      </div>
+      <div>
+        <h4>Документы</h4>
+        <a href="rules.html">Правила сервиса</a>
+        <a href="privacy.html">Конфиденциальность</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 bozor.uz — доска объявлений Узбекистана</span>
+      <span>Фронтенд готов к подключению к Django API</span>
+    </div>
+  </footer>
+
+<script src="js/icons.js"></script>
+<script src="js/data/regions.js"></script>
+<script src="js/data/categories.js"></script>
+<script src="js/data/listings.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/components.js"></script>
+<script src="js/add-listing.js"></script>
+</body>
+</html>

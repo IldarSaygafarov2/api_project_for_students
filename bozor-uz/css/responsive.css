@@ -1,0 +1,54 @@
+/* =========================================================
+   BOZOR.UZ — Responsive
+   ========================================================= */
+
+@media (max-width: 1080px){
+  .cat-grid{ grid-template-columns: repeat(3, 1fr); }
+  .listing-grid{ grid-template-columns: repeat(3, 1fr); }
+  .footer-grid{ grid-template-columns: 1.2fr repeat(2, 1fr); }
+  .product-layout{ grid-template-columns: 1fr; }
+  .stat-cards{ grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 860px){
+  .header-search{ order: 3; flex-basis: 100%; margin-top: 8px; }
+  .header-top{ flex-wrap: wrap; height: auto; padding-block: 10px; }
+  .location-pill span.pill-label{ display: none; }
+  .catalog-layout{ grid-template-columns: 1fr; }
+  .filters-panel{ position: fixed; top: 0; left: 0; height: 100vh; width: 300px; max-width: 84vw;
+    z-index: 150; background: var(--color-bg); border-radius: 0; transform: translateX(-100%);
+    transition: transform .2s ease; max-height: 100vh; }
+  .filters-panel.open{ transform: translateX(0); box-shadow: var(--shadow-lg); }
+  .filters-backdrop{ display: none; position: fixed; inset: 0; background: rgba(16,38,45,.5); z-index: 140; }
+  .filters-backdrop.open{ display: block; }
+  .filters-toggle-btn{ display: inline-flex !important; }
+  .account-layout{ grid-template-columns: 1fr; }
+  .account-nav{ position: static; }
+  .messages-layout{ grid-template-columns: 1fr; height: auto; }
+  .conv-list{ max-height: 320px; }
+}
+
+@media (max-width: 720px){
+  .cat-grid{ grid-template-columns: repeat(2, 1fr); }
+  .listing-grid{ grid-template-columns: repeat(2, 1fr); }
+  .hero-title{ font-size: var(--fs-2xl); }
+  .hero-stats{ gap: var(--sp-5); flex-wrap: wrap; }
+  .footer-grid{ grid-template-columns: 1fr 1fr; }
+  .stat-cards{ grid-template-columns: 1fr 1fr; }
+  .cat-picker{ grid-template-columns: repeat(2,1fr); }
+  .photo-uploader{ grid-template-columns: repeat(3,1fr); }
+  .role-toggle{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px){
+  .listing-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
+  .cat-grid{ grid-template-columns: repeat(2, 1fr); gap: var(--sp-2); }
+  .hero{ padding: var(--sp-8) 0 var(--sp-6); }
+  .hero-search{ flex-direction: column; box-shadow: none; border: 1px solid var(--color-border); }
+  .hero-search button{ width: 100%; }
+  .footer-grid{ grid-template-columns: 1fr 1fr; padding-block: var(--sp-6); }
+  .footer-bottom{ flex-direction: column; text-align: center; }
+  .manage-row{ flex-wrap: wrap; }
+  .manage-row-actions{ width: 100%; justify-content: flex-end; }
+  .wizard-step span.step-label{ display: none; }
+}

@@ -1,0 +1,80 @@
+/* =========================================================
+   BOZOR.UZ — Design tokens
+   Brand idea: "bozor" (Uzbek: bazaar/market). Palette pulls
+   from Samarkand tilework blue + Uzbek suzani gold embroidery.
+   ========================================================= */
+
+:root{
+  /* ---- Color: neutrals ---- */
+  --color-bg:            #ffffff;
+  --color-bg-soft:       #f4f7f8;
+  --color-bg-soft-2:     #eef2f3;
+  --color-ink:           #10262d;
+  --color-ink-soft:      #526670;
+  --color-ink-faint:     #8296a0;
+  --color-border:        #e2e8ea;
+  --color-border-strong: #cdd7da;
+
+  /* ---- Color: brand ---- */
+  --color-primary:       #0e5c6d;
+  --color-primary-dark:  #093f4a;
+  --color-primary-light: #e3f0f2;
+  --color-accent:        #f2a93b;
+  --color-accent-dark:   #d6890f;
+  --color-accent-light:  #fdf1dd;
+
+  /* ---- Color: semantic ---- */
+  --color-success:       #2e9e5b;
+  --color-success-light: #e5f6ec;
+  --color-danger:        #d64545;
+  --color-danger-light:  #fbe9e9;
+  --color-star:          #f2a93b;
+
+  /* ---- Type ---- */
+  --font-display: 'Manrope', 'Segoe UI', sans-serif;
+  --font-body:    'Inter', 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+
+  --fs-xs:   .75rem;
+  --fs-sm:   .8125rem;
+  --fs-base: .9375rem;
+  --fs-md:   1.0625rem;
+  --fs-lg:   1.25rem;
+  --fs-xl:   1.625rem;
+  --fs-2xl:  2.125rem;
+  --fs-3xl:  2.75rem;
+
+  /* ---- Spacing scale ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* ---- Radius ---- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* ---- Shadow ---- */
+  --shadow-sm: 0 1px 2px rgba(16,38,45,.06), 0 1px 1px rgba(16,38,45,.04);
+  --shadow-md: 0 4px 14px rgba(16,38,45,.09);
+  --shadow-lg: 0 12px 32px rgba(16,38,45,.14);
+
+  /* ---- Layout ---- */
+  --container-w: 1180px;
+  --header-h: 64px;
+
+  /* ---- Signature textile-stripe motif (suzani-inspired) ---- */
+  --stripe-motif: repeating-linear-gradient(
+    -45deg,
+    var(--color-accent) 0 10px,
+    var(--color-primary) 10px 20px
+  );
+}

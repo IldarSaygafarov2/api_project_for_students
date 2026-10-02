@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Chevrolet Cobalt, 2021, белый, идеальное состояние — bozor.uz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<header class="site-header" id="site-header">
+    <div class="container header-top">
+      <a class="logo" href="index.html">
+        <span class="logo-mark"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="1"/><path d="M3 9l3-5h12l3 5"/><path d="M3 9h18"/></svg></span>
+        bozor<span class="logo-dot">.uz</span>
+      </a>
+      <button type="button" class="location-pill" id="regionPillBtn">
+        <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> <span class="pill-label" id="regionPillLabel">Ташкент город</span>
+      </button>
+      <form class="header-search" action="catalog.html" method="get" role="search">
+        <input type="search" name="q" placeholder="Что вы ищете?" autocomplete="off">
+        <button type="submit" aria-label="Искать"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></button>
+      </form>
+      <div class="header-actions">
+      <a class="header-action-link" href="favorites.html" title="Избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg><span>Избранное</span></a>
+      <a class="btn btn-outline btn-sm" href="login.html">Войти</a>
+      <a class="btn btn-primary btn-sm" href="login.html?next=add-listing.html"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> Подать объявление</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+    <nav class="container header-nav">
+      <a class="all-cats" href="categories.html"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg> Все категории</a>
+      <a href="catalog.html?category=transport">Транспорт</a>
+      <a href="catalog.html?category=realty">Недвижимость</a>
+      <a href="catalog.html?category=electronics">Электроника</a>
+      <a href="catalog.html?category=jobs">Работа</a>
+      <a href="catalog.html?category=services">Услуги</a>
+      <a href="catalog.html?category=personal">Личные вещи</a>
+      <a href="catalog.html?category=home-garden">Дом и сад</a>
+      <a href="catalog.html?category=hobby">Хобби и спорт</a>
+    </nav>
+  </header>
+  <div class="modal-overlay" id="regionModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>Выберите регион</h3>
+        <button class="modal-close" data-close-modal="regionModal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <button type="button" class="btn btn-outline btn-block" id="geoDetectBtn" style="margin-bottom:14px">
+        <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> Определить автоматически
+      </button>
+      <div style="max-height:360px;overflow-y:auto">
+        <button type="button" class="checkbox-row region-option-row" data-region="tashkent-city" data-region-name="Ташкент город" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ташкент город</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="tashkent-region" data-region-name="Ташкентская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ташкентская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="andijan" data-region-name="Андижанская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Андижанская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="bukhara" data-region-name="Бухарская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Бухарская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="jizzakh" data-region-name="Джизакская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Джизакская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="kashkadarya" data-region-name="Кашкадарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Кашкадарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="navoiy" data-region-name="Навоийская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Навоийская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="namangan" data-region-name="Наманганская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Наманганская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="samarkand" data-region-name="Самаркандская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Самаркандская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="surkhandarya" data-region-name="Сурхандарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Сурхандарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="syrdarya" data-region-name="Сырдарьинская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Сырдарьинская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="fergana" data-region-name="Ферганская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Ферганская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="khorezm" data-region-name="Хорезмская область" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Хорезмская область</span>
+        </button>
+        <button type="button" class="checkbox-row region-option-row" data-region="karakalpakstan" data-region-name="Республика Каракалпакстан" style="width:100%;justify-content:space-between;padding:10px 4px;border-bottom:1px solid var(--color-border)">
+          <span>Республика Каракалпакстан</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<main>
+  <div class="container">
+    <nav class="breadcrumbs" id="breadcrumbs"><a href="index.html">Главная</a><span class="sep">/</span>
+    <a href="catalog.html?category=transport">Транспорт</a><span class="sep">/</span>
+    <span class="current">Chevrolet Cobalt, 2021, белый, идеальное состояние</span></nav>
+  </div>
+
+  <div class="container product-layout" id="productLayout">
+    <div>
+      <div class="gallery-main" id="galleryMain">
+        <img id="galleryImg" src="https://picsum.photos/seed/cobalt0/900/675" alt="Chevrolet Cobalt, 2021, белый, идеальное состояние">
+        <button class="gallery-nav-btn prev" id="galleryPrev" aria-label="Предыдущее фото"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="gallery-nav-btn next" id="galleryNext" aria-label="Следующее фото"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+        <span class="gallery-counter" id="galleryCounter">1 / 6</span>
+      </div>
+      <div class="gallery-thumbs" id="galleryThumbs"><img src="https://picsum.photos/seed/cobalt0/900/675" data-i="0" class="active" alt="Фото 1"><img src="https://picsum.photos/seed/cobalt1/900/675" data-i="1" class="" alt="Фото 2"><img src="https://picsum.photos/seed/cobalt2/900/675" data-i="2" class="" alt="Фото 3"><img src="https://picsum.photos/seed/cobalt3/900/675" data-i="3" class="" alt="Фото 4"><img src="https://picsum.photos/seed/cobalt4/900/675" data-i="4" class="" alt="Фото 5"><img src="https://picsum.photos/seed/cobalt5/900/675" data-i="5" class="" alt="Фото 6"></div>
+
+      <h1 class="product-title" id="productTitle">Chevrolet Cobalt, 2021, белый, идеальное состояние</h1>
+      <div class="product-meta-row" id="productMetaRow">
+        <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg> Ташкент, Юнусабадский р-н</span>
+        <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> 5 дн. назад</span>
+        <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg> 341 просмотров</span>
+      </div>
+      <p class="product-desc" id="productDesc">Продаю Chevrolet Cobalt 2021 года выпуска. Один хозяин, вся история обслуживания на руках, не бита, не крашена. Полная комплектация: климат-контроль, подогрев сидений, датчики парковки. Резина зима/лето в комплекте.</p>
+      <div class="attrs-table" id="attrsTable">
+        <div class="attrs-row"><span>Категория</span><span>Транспорт</span></div>
+        <div class="attrs-row"><span>Подкатегория</span><span>Легковые автомобили</span></div>
+        <div class="attrs-row"><span>Состояние</span><span>Б/у</span></div>
+        <div class="attrs-row"><span>Марка</span><span>Chevrolet</span></div>
+        <div class="attrs-row"><span>Год выпуска</span><span>2021</span></div>
+        <div class="attrs-row"><span>Пробег, км</span><span>42 000 км</span></div>
+        <div class="attrs-row"><span>Коробка передач</span><span>Автомат</span></div>
+        <div class="attrs-row"><span>Регион</span><span>Ташкент город</span></div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="side-card">
+        <div class="side-price" id="sidePrice">128 000 000 сум</div>
+        <div class="negotiable" id="sideNegotiable">Возможен торг</div>
+        <div class="side-actions">
+          <button class="btn btn-primary btn-lg btn-block" id="showPhoneBtn"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3c0 1-1 2-2 2C10.5 20 4 13.5 4 6c0-1 1-2 2-2z"/></svg> Показать телефон</button>
+          <a class="btn btn-outline btn-block" id="messageSellerBtn" href="contact-seller.html?listing=1"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg> Написать сообщение</a>
+        </div>
+        <div class="seller-box">
+          <a id="sellerAvatarLink" class="avatar" href="seller-profile.html?id=u3">AT</a>
+          <div>
+            <a id="sellerNameLink" class="seller-name" href="seller-profile.html?id=u3">AutoPark Tashkent (авто-салон)</a>
+            <div class="seller-sub" id="sellerSub">★★★★★ 4.9 · на сайте с 2020 г.</div>
+          </div>
+        </div>
+        <a class="btn btn-ghost btn-block" style="margin-top:10px" id="sellerProfileLink" href="seller-profile.html?id=u3">Все объявления продавца</a>
+        <div class="safety-note"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Не переводите деньги предоплатой незнакомым людям. Проверяйте товар лично при встрече.</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="container" id="notFoundState" style="display:none">
+    <div class="empty-state">
+      <h3>Объявление не найдено</h3>
+      <p>Возможно, оно было удалено или снято с публикации.</p>
+      <a class="btn btn-secondary" href="catalog.html" style="margin-top:16px">Смотреть другие объявления</a>
+    </div>
+  </div>
+
+  <div class="container section" id="similarSection">
+    <div class="section-head"><h2>Похожие объявления</h2></div>
+    <div class="listing-grid" id="similarGrid">
+    <article class="listing-card">
+      <a href="product.html?id=10" class="listing-thumb-link">
+        <div class="listing-thumb">
+          <img src="https://picsum.photos/seed/camry0/900/675" alt="Toyota Camry 70, 2019, чёрный, полный привод" loading="lazy">
+          <span class="listing-badge">Топ</span>
+          <button class="listing-fav" data-fav-id="10" aria-label="В избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg></button>
+        </div>
+      </a>
+      <div class="listing-body">
+        <div class="listing-price">259 000 000 сум</div>
+        <a href="product.html?id=10"><h3 class="listing-title">Toyota Camry 70, 2019, чёрный, полный привод</h3></a>
+        <div class="listing-meta">
+          <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Ташкент</span>
+          <span>23 августа</span>
+        </div>
+      </div>
+    </article>
+    <article class="listing-card">
+      <a href="product.html?id=18" class="listing-thumb-link">
+        <div class="listing-thumb">
+          <img src="https://picsum.photos/seed/sonata0/900/675" alt="Хёндай Соната, 2020, серебристый" loading="lazy">
+          
+          <button class="listing-fav" data-fav-id="18" aria-label="В избранное"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7.5-4.6-10-9.3C.4 7.6 2 4 5.6 4c2.1 0 3.6 1.2 4.4 2.6C10.8 5.2 12.3 4 14.4 4 18 4 19.6 7.6 18 10.7 15.5 15.4 12 20 12 20z"/></svg></button>
+        </div>
+      </a>
+      <div class="listing-body">
+        <div class="listing-price">176 000 000 сум</div>
+        <a href="product.html?id=18"><h3 class="listing-title">Хёндай Соната, 2020, серебристый</h3></a>
+        <div class="listing-meta">
+          <span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>Фергана</span>
+          <span>3 дн. назад</span>
+        </div>
+      </div>
+    </article></div>
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-logo">bozor<span style="color:var(--color-accent)">.uz</span></div>
+        <p class="footer-about">Доска объявлений №1 в Узбекистане. Покупайте и продавайте товары и услуги в своём городе быстро и безопасно.</p>
+        <div class="footer-socials" style="margin-top:16px">
+          <a href="#" aria-label="Telegram"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L2.5 11.4c-.9.35-.9 1.05-.15 1.3l4.5 1.4 1.7 5.3c.2.6.4.65.85.3l2.4-1.9 4.4 3.25c.6.35 1.1.15 1.25-.55L21.9 5.1c.2-.85-.35-1.35-1-1.1z" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 21v-8h3l.5-4H14V6.5c0-1.15.3-1.9 2-1.9H17.5V1.1C17.2 1.05 16 1 14.7 1 11.9 1 10 2.7 10 5.8V9H7v4h3v8z" fill="currentColor" stroke="none"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Категории</h4>
+        <a href="catalog.html?category=transport">Транспорт</a>
+        <a href="catalog.html?category=realty">Недвижимость</a>
+        <a href="catalog.html?category=electronics">Электроника</a>
+        <a href="catalog.html?category=jobs">Работа</a>
+        <a href="catalog.html?category=services">Услуги</a>
+        <a href="categories.html">Все категории →</a>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <a href="about.html">О сайте</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="help.html">Помощь</a>
+      </div>
+      <div>
+        <h4>Пользователям</h4>
+        <a href="add-listing.html">Подать объявление</a>
+        <a href="login.html">Войти</a>
+        <a href="register.html">Регистрация</a>
+      </div>
+      <div>
+        <h4>Документы</h4>
+        <a href="rules.html">Правила сервиса</a>
+        <a href="privacy.html">Конфиденциальность</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 bozor.uz — доска объявлений Узбекистана</span>
+      <span>Фронтенд готов к подключению к Django API</span>
+    </div>
+  </footer>
+
+<div class="modal-overlay" id="phoneModal">
+  <div class="modal-box">
+    <div class="modal-head"><h3>Контакты продавца</h3><button class="modal-close" data-close-modal="phoneModal"></button></div>
+    <p style="text-align:center;font-size:var(--fs-2xl);font-family:var(--font-mono);font-weight:800;color:var(--color-primary-dark);padding:20px 0" id="phoneModalNumber"></p>
+    <p style="text-align:center;color:var(--color-ink-faint);font-size:var(--fs-sm)">Сообщите, что нашли объявление на bozor.uz</p>
+  </div>
+</div>
+
+<script src="js/icons.js"></script>
+<script src="js/data/regions.js"></script>
+<script src="js/data/categories.js"></script>
+<script src="js/data/listings.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/components.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>
