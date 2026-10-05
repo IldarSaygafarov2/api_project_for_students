@@ -1,6 +1,7 @@
 from django.db import models
 
 from project.apps.common.models import BaseModel
+from project.apps.common.choices import RegionChoices
 
 
 class BaseCategoryModel(BaseModel):
@@ -50,6 +51,8 @@ class Advertisement(BaseModel):
     description = models.TextField(verbose_name='Описание')
     status = models.CharField(
         verbose_name='Статус', choices=Status.choices, default=Status.MODERATION)
+    region = models.CharField(verbose_name='Регион', max_length=30,
+                              choices=RegionChoices.choices, default=RegionChoices.TASHKENT_CITY)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE,
                              related_name='advertisements', verbose_name='Пользователь')
     category = models.ForeignKey(Category, on_delete=models.CASCADE,
